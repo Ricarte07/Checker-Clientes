@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* variáveis */
+:root {
+    --accent:      #00c896;
+    --accent-dim:  rgba(0,200,150,0.12);
+    --accent-glow: rgba(0,200,150,0.25);
+    --blue:        #3b9eff;
+    --blue-dim:    rgba(59,158,255,0.12);
+    --warn:        #f59e0b;
+    --warn-dim:    rgba(245,158,11,0.12);
+    --danger:      #f04a5e;
+    --danger-dim:  rgba(240,74,94,0.12);
+    --bg:          #07111f;
+    --bg2:         #0e1e32;
+    --bg3:         #162440;
+    --border:      rgba(255,255,255,0.07);
+    --border-acc:  rgba(0,200,150,0.35);
+    --txt:         #dde6f0;
+    --txt2:        #7a90a8;
+    --radius:      14px;
+}
+
+/* reset geral */
+html, body, .stApp {
+    font-family: 'Outfit', sans-serif !important;
+    background: var(--bg) !important;
+    color: var(--txt) !important;
+}
+
+/* bloco principal */
+.block-container {
+    padding: 2rem 2.5rem !important;
+    max-width: 1400px !important;
+}
+
+/* sidebar */
+[data-testid="stSidebar"] {
+    background: var(--bg2) !important;
+    border-right: 1px solid var(--border) !important;
+}
+[data-testid="stSidebar"] * { font-family: 'Outfit', sans-serif !important; }
+[data-testid="stSidebar"] .stRadio label {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    padding: 10px 14px !important;
+    border-radius: 10px !important;
+    transition: background .2s, color .2s !important;
+    display: block !important;
+    cursor: pointer !important;
+}
+[data-testid="stSidebar"] .stRadio label:hover {
+    background: var(--accent-dim) !important;
+    color: var(--accent) !important;
+}
+
+/* títulos */
+h1 { font-size: 2rem !important; font-weight: 800 !important; letter-spacing: -0.5px !important; }
+h2 { font-size: 1.3rem !important; font-weight: 700 !important; }
+h3 { font-size: 1.1rem !important; font-weight: 600 !important; }
+
+/* botão primário */
+.stButton > button[kind="primary"],
+.stButton > button[data-testid*="primary"] {
+    background: linear-gradient(135deg, #00c896 0%, #00a87a 100%) !important;
+    color: #07111f !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    padding: 0.6rem 1.6rem !important;
+    box-shadow: 0 4px 20px var(--accent-glow) !important;
+    transition: transform .15s, box-shadow .15s !important;
+}
+.stButton > button[kind="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 28px var(--accent-glow) !important;
+}
+
+/* botão secundário / download */
+.stButton > button,
+.stDownloadButton > button {
+    background: var(--bg3) !important;
+    color: var(--txt) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    transition: border-color .2s, background .2s !important;
+}
+.stButton > button:hover,
+.stDownloadButton > button:hover {
+    border-color: var(--accent) !important;
+    background: var(--accent-dim) !important;
+    color: var(--accent) !important;
+}
+
+/* download button destaque */
+.stDownloadButton > button {
+    width: 100% !important;
+    padding: 0.65rem 1.2rem !important;
+}
+
+/* file uploader */
+[data-testid="stFileUploader"] {
+    background: var(--bg2) !important;
+    border: 2px dashed var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 1rem !important;
+    transition: border-color .2s !important;
+}
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--accent) !important;
+}
+[data-testid="stFileUploaderDropzone"] {
+    background: transparent !important;
+}
+
+/* métricas nativas */
+[data-testid="stMetric"] {
+    background: var(--bg2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 1.1rem 1.4rem !important;
+}
+[data-testid="stMetricLabel"] {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .8px !important;
+    color: var(--txt2) !important;
+}
+[data-testid="stMetricValue"] {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    color: var(--txt) !important;
+}
+
+/* cards de métrica customizados */
+.mcard {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    border-top: 3px solid var(--accent);
+}
+.mcard.blue   { border-top-color: var(--blue);   }
+.mcard.warn   { border-top-color: var(--warn);   }
+.mcard.danger { border-top-color: var(--danger); }
+.mcard .mlabel {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--txt2); margin-bottom: 6px;
+}
+.mcard .mval {
+    font-size: 2rem; font-weight: 800;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--txt); line-height: 1;
+}
+.mcard.accent .mval { color: var(--accent); }
+.mcard.blue   .mval { color: var(--blue);   }
+.mcard.warn   .mval { color: var(--warn);   }
+.mcard.danger .mval { color: var(--danger); }
+
+/* hero header */
+.page-hero {
+    background: linear-gradient(135deg, var(--bg2) 0%, #0a1d35 100%);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.8rem 2rem;
+    margin-bottom: 1.5rem;
+}
+.page-hero h1 {
+    margin: 0 0 4px 0 !important;
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    color: var(--txt) !important;
+}
+.page-hero p { margin: 0; color: var(--txt2); font-size: 14px; }
+.page-hero .badge {
+    display: inline-block;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .8px;
+    padding: 3px 10px; border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+/* step cards */
+.step-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    height: 100%;
+}
+.step-card .step-num {
+    width: 28px; height: 28px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+}
+.step-card .step-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.step-card .step-desc  { color: var(--txt2); font-size: 12px; }
+
+/* seção resultado */
+.result-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 1rem 1.2rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+}
+.result-header .dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.result-header .dot.green  { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.result-header .dot.yellow { background: var(--warn);   box-shadow: 0 0 8px var(--warn);   }
+.result-header .rh-title { font-weight: 700; font-size: 15px; }
+.result-header .rh-count {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--txt2);
+}
+
+/* expander */
+[data-testid="stExpander"] {
+    background: var(--bg2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+}
+
+/* inputs */
+.stTextInput input, .stSelectbox select, .stNumberInput input {
+    background: var(--bg2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    color: var(--txt) !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+.stTextInput input:focus, .stSelectbox select:focus, .stNumberInput input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px var(--accent-dim) !important;
+}
+
+/* dataframe */
+[data-testid="stDataFrame"] { border-radius: var(--radius) !important; overflow: hidden !important; }
+
+/* divider */
+hr { border-color: var(--border) !important; margin: 1.5rem 0 !important; }
+
+/* alerts */
+.stSuccess, .stInfo, .stWarning, .stError {
+    border-radius: 10px !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+/* sidebar logo */
+.sidebar-logo {
+    display: flex; align-items: center; gap: 10px; padding: 0.5rem 0 1rem;
+}
+.sidebar-logo .logo-icon {
+    width: 36px; height: 36px; background: var(--accent-dim);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 18px;
+}
+.sidebar-logo .logo-text { font-weight: 800; font-size: 16px; color: var(--txt); }
+.sidebar-logo .logo-sub  { font-size: 11px; color: var(--txt2); }
+
+/* nav section label */
+.nav-section {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--txt2); padding: 0.5rem 0 0.3rem;
+}
